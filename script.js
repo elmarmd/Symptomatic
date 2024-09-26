@@ -193,7 +193,7 @@ function displayDiagnoses() {
         let issue = await response.json();
 
         eachDiagnosis.appendChild(diagnosisInfo);
-        diagnosisInfo.innerHTML = `<div><b>Description:</b> ${issue.Description}</div><div><b>Condition:</b> ${issue.MedicalCondition}</div><div><b>Possible symptoms:</b> ${issue.PossibleSymptoms}</div><div><b>Management:</b> ${issue.TreatmentDescription}</div>`;
+        diagnosisInfo.innerHTML = `<br><div><b>Description:</b> ${issue.Description}</div><br><div><b>Condition:</b> ${issue.MedicalCondition}</div><br><div><b>Possible symptoms:</b> ${issue.PossibleSymptoms}</div><br><div><b>Management:</b> ${issue.TreatmentDescription}</div>`;
         infoShown = true;
       }
     });
