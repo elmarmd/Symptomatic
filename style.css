@@ -24,6 +24,7 @@ body {
   border-radius: 10px;
   padding: 1rem 1rem;
   width: 40%;
+  background-color: rgb(204, 255, 225);
 }
 
 .input-field {
@@ -53,6 +54,7 @@ body {
   width: 80%;
   margin-top: 10px;
   margin-bottom: 10px;
+  background-color: bisque;
 }
 
 #diagnoses-container {
@@ -68,6 +70,7 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
   font-weight: bolder;
+  background-color: lightcyan;
 }
 
 button {

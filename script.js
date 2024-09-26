@@ -12,6 +12,8 @@ const symptomsForm = document.getElementById('symptoms-form');
 const specialistsElement = document.getElementById('specialists-container');
 
 let token = '';
+let authenticationUrl = 'https://sandbox-authservice.priaid.ch';
+let dataUrl = 'https://sandbox-healthservice.priaid.ch';
 
 let symptomsArray = [];
 let diagnosesArray = [];
@@ -52,7 +54,7 @@ function populateSymptoms() {
 async function getSymptoms() {
   try {
     // Create an encrypted hash string for API authentication
-    const uri = 'https://sandbox-authservice.priaid.ch/login';
+    const uri = `${authenticationUrl}/login`;
     const secretKey = 'Er5j4ZDe87NdXp63Q';
     const computedHash = CryptoJS.HmacMD5(uri, secretKey);
     const computedHashString = computedHash.toString(CryptoJS.enc.Base64);
@@ -60,20 +62,17 @@ async function getSymptoms() {
 
     // Fetch authorization token by posting api key and encrypted hash string
     var apiLogin = 'emammadovmd@gmail.com';
-    const responseToken = await fetch(
-      'https://sandbox-authservice.priaid.ch/login',
-      {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${apiLogin}:${computedHashString}`,
-        },
-      }
-    );
+    const responseToken = await fetch(uri, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiLogin}:${computedHashString}`,
+      },
+    });
     token = await responseToken.json();
     token = token.Token;
 
     // Fetch symptoms from API for selection
-    const apiSymptomsUrl = `https://sandbox-healthservice.priaid.ch/symptoms?token=${token}&format=json&language=en-gb`;
+    const apiSymptomsUrl = `${dataUrl}/symptoms?token=${token}&format=json&language=en-gb`;
     const response = await fetch(apiSymptomsUrl);
     symptomsArray = await response.json();
     console.log(symptomsArray);
@@ -158,7 +157,7 @@ function submitForm(event) {
 async function getDiagnoses() {
   // Fetch diagnoses for submitted symptoms
   console.log(selectedSymptoms, sex, birthyear);
-  const apiDiagnosisUrl = `https://sandbox-healthservice.priaid.ch/diagnosis?symptoms=[${selectedSymptoms}]&gender=${sex}&year_of_birth=${birthyear}&token=${token}&format=json&language=en-gb`;
+  const apiDiagnosisUrl = `${dataUrl}/diagnosis?symptoms=[${selectedSymptoms}]&gender=${sex}&year_of_birth=${birthyear}&token=${token}&format=json&language=en-gb`;
   const response = await fetch(apiDiagnosisUrl);
   diagnosesArray = await response.json();
 
@@ -189,7 +188,7 @@ function displayDiagnoses() {
 
         // Fetch API information about the specific condition
         console.log(diagnosis.Issue.ID);
-        const apiIssueUrl = `https://sandbox-healthservice.priaid.ch/issues/${diagnosis.Issue.ID}/info?token=${token}&format=json&language=en-gb`;
+        const apiIssueUrl = `${dataUrl}/issues/${diagnosis.Issue.ID}/info?token=${token}&format=json&language=en-gb`;
         const response = await fetch(apiIssueUrl);
         let issue = await response.json();
 
@@ -219,7 +218,7 @@ async function getSpecializations() {
     specializationsOpen = false;
   } else {
     const response = await fetch(
-      `https://sandbox-healthservice.priaid.ch/diagnosis/specialisations?symptoms=[${selectedSymptoms}]&gender=${sex}&year_of_birth=${birthyear}&token=${token}&format=json&language=en-gb`
+      `${dataUrl}/diagnosis/specialisations?symptoms=[${selectedSymptoms}]&gender=${sex}&year_of_birth=${birthyear}&token=${token}&format=json&language=en-gb`
     );
     let specializations = await response.json();
     console.log(specializations);
