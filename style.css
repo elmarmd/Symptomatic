@@ -98,6 +98,10 @@ button {
   .form-container {
     width: 90%;
   }
+
+  .app-info {
+    width: 90%;
+  }
 }
 
 @media screen and (max-width: 600px) {
