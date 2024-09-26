@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Symptomatic</title>
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Welcome to the Symptomatic App</h1>
+    <div class="app-info">
+      <p>
+        Here you may find answers to your health complaints and get guidance on
+        what conditions you may have based on your unique set of symptoms. You
+        can also get recommendations on which specialists you should see to get
+        help with you health complaints.
+      </p>
+      <p>
+        While Symptomatic doesn't constitute a medical opinion, it helps users
+        receive information and guidance on possible ailments they may have
+        based on their symptoms. If you have acute or serious problem, stop now
+        and get medical help as soon as possible.
+      </p>
+    </div>
+
+    <div class="form-container">
+      <form id="symptoms-form">
+        <div class="input-field">
+          <label>Please select your biological gender:</label><br />
+          <input type="radio" id="male" name="sex" value="male" checked />
+          <label for="male">Male</label><br />
+          <input type="radio" id="female" name="sex" value="female" />
+          <label for="female">Female</label><br />
+        </div>
+        <div class="input-field">
+          <label for="birthyear">Birth year:</label>
+          <select id="select-year" name="yyyy"></select>
+        </div>
+        <div class="input-field">
+          <label>Choose symptom:</label>
+          <select name="Symptom" id="symptom-selection"></select>
+        </div>
+        <div>
+          <button id="add-symptom">Add Symptom</button>
+        </div>
+        <div id="your-symptoms"><b>Your symptoms:</b></div>
+        <div>
+          <button id="symptom-submit-button">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="diagnoses-container"></div>
+    <div id="specialists-container" hidden>Which specialists should I see?</div>
+
+    <script src="hmac-md5.js"></script>
+    <script src="enc-base64-min.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
