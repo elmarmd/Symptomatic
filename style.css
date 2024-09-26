@@ -76,3 +76,10 @@ body {
 button {
   margin-bottom: 10px;
 }
+
+/* Media Query: tablet or smaller */
+@media screen and (max-width: 700px) {
+  .form-container {
+    width: 90%;
+  }
+}
