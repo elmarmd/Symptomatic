@@ -32,6 +32,10 @@ function yearSelection() {
     yearOption.setAttribute('value', i);
     yearOption.textContent = i;
     selectYear.appendChild(yearOption);
+    const savedYear = localStorage.getItem('birthyear');
+    if (i == savedYear) {
+      yearOption.setAttribute('selected', true);
+    }
   }
 }
 
@@ -112,8 +116,6 @@ function addSymptom(event) {
   }
 }
 
-function deleteSymptom() {}
-
 function clickSymptoms(event) {
   // Handling symptoms click
   console.log('Event target value ', event.target.value);
@@ -141,9 +143,11 @@ function submitForm(event) {
   } else if (femaleElement.checked) {
     sex = 'female';
   }
+  localStorage.setItem('sex', sex);
 
   // Determine birthyear
   birthyear = selectYear.value;
+  localStorage.setItem('birthyear', birthyear);
   console.log(birthyear);
 
   if (selectedSymptoms.length === 0) {
@@ -248,5 +252,13 @@ addSymptomsButton.addEventListener('click', addSymptom);
 symptomsForm.addEventListener('submit', submitForm);
 
 // Call on load
+
+const savedSex = localStorage.getItem('sex');
+if (savedSex === 'male') {
+  document.getElementById('male').setAttribute('checked', true);
+} else if (savedSex === 'female') {
+  document.getElementById('female').setAttribute('checked', true);
+}
+
 yearSelection();
 getSymptoms();
