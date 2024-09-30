@@ -17,6 +17,15 @@ body {
   background: whitesmoke;
 }
 
+/* 
+#overall-div {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+} */
+
 .app-info {
   width: 60%;
 }
@@ -25,11 +34,12 @@ body {
   display: flex;
   align-items: center;
   border: 2px outset black;
-  box-shadow: 5px 5px 3px 3px rgb(108, 108, 108);
+  box-shadow: 5px 5px 10px 5px rgba(108, 108, 108, 0.4);
   border-radius: 10px;
   padding: 1rem 1rem;
   width: 50%;
-  background-color: rgb(255, 233, 242);
+  /* background-color: rgb(255, 233, 242); */
+  background-image: linear-gradient(to top left, #fe6087, #fee8e9);
   margin-bottom: 2rem;
 }
 
@@ -58,13 +68,14 @@ body {
 
 .each-diagnosis {
   border: 2px outset black;
-  box-shadow: 5px 5px 3px 3px rgb(108, 108, 108);
+  box-shadow: 5px 5px 10px 5px rgba(108, 108, 108, 0.4);
   border-radius: 10px;
   padding: 1rem 1rem;
   width: 80%;
   margin-top: 10px;
   margin-bottom: 10px;
-  background-color: bisque;
+  /* background-color: bisque; */
+  background-image: linear-gradient(to top left, #ffd574, #fff1cc);
 }
 
 #diagnoses-container {
@@ -73,14 +84,15 @@ body {
 
 #specialists-container {
   border: 2px outset rgb(2, 75, 159);
-  box-shadow: 5px 5px 3px 3px rgb(111, 146, 187);
+  box-shadow: 5px 5px 10px 5px rgb(111, 146, 187, 0.4);
   border-radius: 10px;
   padding: 1rem 1rem;
   width: 50%;
   margin-top: 10px;
   margin-bottom: 10px;
   font-weight: bolder;
-  background-color: lightcyan;
+  /* background-color: lightcyan; */
+  background-image: linear-gradient(to top left, #3dbeff, #ccf0ff);
 }
 
 button {
